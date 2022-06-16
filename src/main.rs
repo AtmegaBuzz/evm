@@ -1,5 +1,18 @@
 mod utils;
 use std::io;
+use utils::admin::Admin;
+
+const admin: Admin  = Admin { 
+    name: "admin",
+    email: "admin@gmail.com",
+    password: "admin",
+    active_session:false 
+};
+
+// fn admin(){
+
+// }
+
 
 fn run_system(){
     loop {
@@ -28,7 +41,10 @@ fn run_system(){
     }
 }
 
+
+
 fn main() {
+    
     run_system();
     println!("System Closed!");
 }
