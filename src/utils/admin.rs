@@ -1,9 +1,8 @@
 
-
 pub struct Admin{
-    pub name: &str,
-    pub email: &str,
-    pub password: &str,
+    pub name: String,
+    pub email: String,
+    pub password: String,
     pub active_session: bool 
 }
 
@@ -22,5 +21,15 @@ impl Admin{
         self.active_session = !self.active_session
     }
 
+    pub fn verify_cred(&self,username: &String,password: &String) -> bool{
+        if self.name==*username && self.password==*password{
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
 
 }
+
