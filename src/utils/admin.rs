@@ -21,8 +21,8 @@ impl Admin{
         self.active_session = !self.active_session
     }
 
-    pub fn verify_cred(&self,username: &String,password: &String) -> bool{
-        if self.name==*username && self.password==*password{
+    pub fn verify_cred(&self,username: &str,password: &str) -> bool{
+        if self.name==username && self.password==password{
             return true;
         }
         

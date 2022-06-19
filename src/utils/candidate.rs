@@ -43,7 +43,7 @@ impl Candidate{
 }
 
 
-pub fn create_candidate(){
+pub fn create_candidate() -> Candidate{
     let mut name = String::new();
     let mut email = String::new();
 
@@ -59,5 +59,6 @@ pub fn create_candidate(){
     new_candidate.set_email(email);
 
     println!("Candidate created");
+    return new_candidate;
 }
 
