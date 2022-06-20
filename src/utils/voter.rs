@@ -1,5 +1,6 @@
 use std::io::stdin;
 
+#[derive(Debug)]
 pub struct Voter{
     name: String,
     age: u32,
@@ -37,21 +38,3 @@ impl Voter{
     }
 }
 
-
-pub fn create_voter(){
-    let mut name = String::new();
-    let mut email = String::new();
-
-    println!("Name: ");
-    stdin().read_line(&mut name).expect("Failed");
-    println!("Email: ");
-    stdin().read_line(&mut email).expect("Failed");
-
-
-    let mut new_candidate: Voter = Voter::init();
-
-    new_candidate.set_name(name);
-
-    println!("Voter created");
-
-}

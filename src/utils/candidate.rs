@@ -1,6 +1,6 @@
 use std::io::stdin;
 
-
+#[derive(Debug)]
 pub struct Candidate{
     name: String,
     email: String,

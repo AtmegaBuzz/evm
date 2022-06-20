@@ -1,7 +1,6 @@
 mod utils;
 use std::io;
-use utils::run_admin;
-
+use utils::{run_admin,Person};
 
 fn run_system(){
     
@@ -22,7 +21,18 @@ fn run_system(){
         println!("{}",choice);
 
         match choice {
-            1 => {run_admin();},
+            1 => {
+                let person:Option<Person> = run_admin();
+                match person{
+                    Some(Person::Candidate(Candidate)) => {
+                        println!("{:?}",person);
+                    }
+                    Some(Person::Candidate(Voter)) => {
+                        println!("Voter created");
+                    }
+                    _ => println!("Invalid Person returned.")
+                }
+            },
             2 => println!("2"),
             3 => println!("3"),
             -1 => break,

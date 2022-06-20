@@ -3,11 +3,60 @@ pub mod voter;
 pub mod admin;
 
 use admin::Admin;
-use candidate::{create_candidate,Candidate};
-use voter::{create_voter,Voter};
+use candidate::{Candidate};
+use voter::{Voter};
 use std::io;
 
-pub fn run_admin<T: MarkParser+Default>() -> Option<T>{
+#[derive(Debug)]
+pub enum Person {
+    Candidate,
+    Voter
+}
+
+impl Person{
+
+    
+    pub fn create_voter() -> Voter{
+        let mut name = String::new();
+        let mut email = String::new();
+
+        println!("Name: ");
+        io::stdin().read_line(&mut name).expect("Failed");
+        println!("Email: ");
+        io::stdin().read_line(&mut email).expect("Failed");
+
+
+        let mut new_voter: Voter = Voter::init();
+
+        new_voter.set_name(name);
+
+        println!("Voter created");
+        return new_voter;
+
+    }    
+
+    pub fn create_candidate() -> Candidate{
+        let mut name = String::new();
+        let mut email = String::new();
+    
+        println!("Name: ");
+        io::stdin().read_line(&mut name).expect("Failed");
+        println!("Email: ");
+        io::stdin().read_line(&mut email).expect("Failed");
+    
+    
+        let mut new_candidate: Candidate = Candidate::init();
+    
+        new_candidate.set_name(name);
+        new_candidate.set_email(email);
+    
+        println!("Candidate created");
+        return new_candidate;
+    }
+}
+
+
+pub fn run_admin() -> Option<Person>{
 
     let admin = Admin { 
             name: String::from("admin"),
@@ -50,10 +99,13 @@ pub fn run_admin<T: MarkParser+Default>() -> Option<T>{
 
         match choice {
             1 => {
-                let new_candidate:Candidate = create_candidate();
-                return Some(new_candidate);
+                let new_candidate: Candidate = Person::create_candidate();
+                return Some(Person::Candidate(new_candidate));
                 },
-            2 => create_voter(),
+            2 => {
+                    let new_voter:Voter = Person::create_voter();
+                    return Some(Person::Voter(new_voter));
+                },
             -1 => break,
             _ => println!("Invalid Option")
         }
@@ -61,6 +113,7 @@ pub fn run_admin<T: MarkParser+Default>() -> Option<T>{
         
     }
     
+    return None;
 
 }
 
