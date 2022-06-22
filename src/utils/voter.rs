@@ -1,6 +1,6 @@
 use std::io::stdin;
 
-#[derive(Debug)]
+// #[derive(Debug)]
 pub struct Voter{
     name: String,
     age: u32,

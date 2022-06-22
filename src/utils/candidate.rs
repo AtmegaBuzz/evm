@@ -1,6 +1,6 @@
 use std::io::stdin;
 
-#[derive(Debug)]
+// #[derive(Debug)]
 pub struct Candidate{
     name: String,
     email: String,
@@ -43,22 +43,5 @@ impl Candidate{
 }
 
 
-pub fn create_candidate() -> Candidate{
-    let mut name = String::new();
-    let mut email = String::new();
 
-    println!("Name: ");
-    stdin().read_line(&mut name).expect("Failed");
-    println!("Email: ");
-    stdin().read_line(&mut email).expect("Failed");
-
-
-    let mut new_candidate: Candidate = Candidate::init();
-
-    new_candidate.set_name(name);
-    new_candidate.set_email(email);
-
-    println!("Candidate created");
-    return new_candidate;
-}
 
