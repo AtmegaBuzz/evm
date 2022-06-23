@@ -2,7 +2,11 @@
 pub mod admin;
 pub mod candidate;
 pub mod voter;
+pub mod db;
 
+use std::io::stdin;
+use candidate::Candidate;
+use voter::Voter;
 
 pub fn create_candidate() -> Candidate{
     let mut name = String::new();
@@ -42,3 +46,11 @@ pub fn create_voter() -> Voter{
     return new_voter;
 
 }    
+
+
+pub fn sperator_heavy(){
+    println!("=====================================");
+}
+pub fn sperator_light(){
+    println!("-------------------------------------")
+}

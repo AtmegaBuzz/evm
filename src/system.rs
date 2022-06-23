@@ -1,6 +1,15 @@
 use std::io;
 
-use crate::utils::{admin::Admin,candidate::Candidate,voter::Voter,create_candidate,create_voter};
+use crate::utils::{
+    admin::Admin,
+    candidate::Candidate,
+    voter::Voter,
+    db::Db,
+
+    create_candidate,
+    create_voter
+};
+
 
 
 pub fn run_admin(){
@@ -10,6 +19,8 @@ pub fn run_admin(){
             password: String::from("admin"),
             active_session:false 
         };
+
+    let mut database = Db::init_db();
     
     let mut username = String::from("");
     let mut password = String::from("");
@@ -24,12 +35,18 @@ pub fn run_admin(){
     .read_line(&mut password)
     .expect("Failed to read");
 
+    println!();
+
     if admin.verify_cred(&username.trim(), &password.trim()){        
         loop{
 
+            println!();
             println!("1 = Create new Candidate");
             println!("2 = Create new Voter");
+            println!("3 = List all Candidates");
+            println!("4 = List all Voters");
             println!("-1 = Back");
+            println!();
 
             let mut buff = String::new();
 
@@ -41,11 +58,16 @@ pub fn run_admin(){
 
             match choice {
                 1 => {
-                    let new_candidate: Candidate = create_candidate();
+                        let new_candidate: Candidate = create_candidate();
+                        database.append_candidate(new_candidate);
                     },
                 2 => {
                         let new_voter:Voter = create_voter();
+                        database.append_voter(new_voter);
                     },
+                3 => {
+                        database.list_candidates();
+                    }
                 -1 => break,
                 _ => println!("Invalid Option")
             }

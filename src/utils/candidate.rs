@@ -1,5 +1,3 @@
-use std::io::stdin;
-
 // #[derive(Debug)]
 pub struct Candidate{
     name: String,
@@ -30,7 +28,20 @@ impl Candidate{
     }
     pub fn set_disqualified(&mut self,is_disqualified:bool){
         self.disqualified = is_disqualified
-    }   
+    }
+    
+    pub fn get_name(&self) -> &String{
+        &self.name
+    }
+    pub fn get_email(&self) -> &String{
+        &self.email
+    }
+    pub fn get_votes(&self) -> &u32{
+        &self.votes
+    }
+    pub fn get_disqualified(&self) -> &bool{
+        &self.disqualified
+    }
 
     pub fn info(&self){
         println!("Name: {}, Votes: {}, Disqualified: {}",self.name,self.votes,self.disqualified);
