@@ -1,2 +1,2 @@
 # evm
-a random shitty code
+simple replication of EVM(Electronic Voting Machine)
