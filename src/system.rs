@@ -12,7 +12,7 @@ use crate::utils::{
 
 
 
-pub fn run_admin(){
+pub fn run_admin(database: &mut Db){
     let admin = Admin { 
             name: String::from("admin"),
             email: String::from("admin@gmail.com"),
@@ -20,7 +20,6 @@ pub fn run_admin(){
             active_session:false 
         };
 
-    let mut database = Db::init_db();
     
     let mut username = String::from("");
     let mut password = String::from("");
@@ -85,8 +84,30 @@ pub fn run_admin(){
 
 }
 
+pub fn run_voter(database: &mut Db){
+    
+    let mut name = String::from("");
+    let mut email = String::from("");
+
+    println!("Voter name: ");
+    io::stdin()
+    .read_line(&mut name)
+    .expect("Failed to read");
+
+    println!("Voter email: ");
+    io::stdin()
+    .read_line(&mut email)
+    .expect("Failed to read");
+
+    println!();
+
+    let voters = database.get_voters();
+
+}
+
 pub fn run_system(){
     
+    let mut database = Db::init_db();
 
     loop {
         println!("Hello Welcome to the EVM.");
@@ -104,12 +125,10 @@ pub fn run_system(){
         println!("{}",choice);
 
         match choice {
-            1 => {
-                let person = run_admin();
-                },
+            1 => run_admin(&mut database),
             
             2 => println!("2"),
-            3 => println!("3"),
+            3 => run_voter(&mut database),
             -1 => break,
             _ => println!("invalid choice"),
         }

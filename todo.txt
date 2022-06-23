@@ -1,0 +1,7 @@
+1. admin should create voters and candidates with default password = password
+2. voter and candidate should login with the help of default password and can change it later
+3. voter and candidate can change their personal info except from (isvoted and voters).
+4. create a sperate mysql db to store info.
+
+** voter can vote any candidate once by specifying their name.
+** add validation for duplicate names in voter and candidate  
