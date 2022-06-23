@@ -24,12 +24,25 @@ impl Voter{
         self.age = age;
     }
 
+    pub fn get_name(&self) -> &String{
+        &self.name
+    }
+
+
+    pub fn get_age(&self) -> &u32{
+        &self.age
+    }
+    
+    pub fn get_voted(&self) -> &bool{
+        &self.voted
+    }
+
     pub fn voted(&mut self){
         self.voted = true;
     }
 
     pub fn info(&self){
-        println!("Name: {}, Voted: {}",self.name,self.voted);
+        println!("Name: {}, \nVoted: {}",self.name,self.voted);
     }
 
     pub fn vote(&mut self){

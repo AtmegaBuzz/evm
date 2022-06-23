@@ -67,6 +67,9 @@ pub fn run_admin(){
                     },
                 3 => {
                         database.list_candidates();
+                    },
+                4 => {
+                        database.list_voters();
                     }
                 -1 => break,
                 _ => println!("Invalid Option")

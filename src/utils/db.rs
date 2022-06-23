@@ -50,8 +50,31 @@ impl Db{
         sperator_heavy();
     }
 
+
+    pub fn list_voters(&self){
+        sperator_heavy();
+
+        for voter in self.voters.iter(){
+
+            sperator_light();  
+
+            println!(
+                "Name: {} \nVoted: {}",
+                voter.get_name().trim(),
+                voter.get_voted(),
+            );
+            
+            sperator_light();            
+        }
+
+        sperator_heavy();
+    }
+
     pub fn get_candidates(&self)-> &Vec<Candidate>{
         return &self.candidates;
+    }
+    pub fn get_voters(&self)-> &Vec<Voter>{
+        return &self.voters;
     }
     // pub fn get_candidate(&self,name:String)-> &Candidate{
     //     for candidate in self.candidates.iter(){
